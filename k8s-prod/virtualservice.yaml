@@ -4,7 +4,7 @@ metadata:
   name: app-routing
 spec:
   hosts:
-  - "*"
+  - prod.adarsh-jain-ecom.gt.tc
   gateways:
   - app-gateway
   http:
