@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: app-routing
+  namespace: prod
 spec:
   hosts:
   - prod.adarsh-jain-ecom.gt.tc
@@ -13,15 +14,14 @@ spec:
         prefix: /api
     route:
     - destination:
-        host: backend
+        host: backend.prod.svc.cluster.local
         port:
           number: 5000
-
   - match:
     - uri:
         prefix: /
     route:
     - destination:
-        host: frontend
+        host: frontend.prod.svc.cluster.local
         port:
           number: 80
