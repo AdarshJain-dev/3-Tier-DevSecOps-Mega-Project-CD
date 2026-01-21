@@ -21,6 +21,13 @@ spec:
           image: adarshjain428/backend:v12
           ports:
             - containerPort: 5000
+          env:
+            - name: DB_HOST
+              value: crud-app.c47akookwd22.us-east-1.rds.amazonaws.com
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_NAME
+              value: crud_app
           envFrom:
           - secretRef:
               name: rds-mysql-secret
