@@ -17,7 +17,7 @@ spec:
         - name: backend
           image: {{ .Values.backend.image | quote }}
           ports:
-            - containerPort: {{ .Values.backend.port  | quote }}
+            - containerPort: {{ .Values.backend.port }}
           env:
             - name: DB_HOST
               value: {{ .Values.database.host | quote }}
