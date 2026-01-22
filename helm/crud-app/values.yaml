@@ -1,0 +1,22 @@
+namespace: prod
+
+backend:
+  name: backend
+  image: adarshjain/backend:latest
+  replicas: 2
+  port: 5000
+
+frontend:
+  name: frontend
+  image: adarshjain/frontend:latest
+  replicas: 2
+  port: 80
+
+database:
+  host: crud-app.c47akookwd22.us-east-1.rds.amazonaws.com
+  name: crud_app
+  port: 3306
+
+secrets:
+  awsRegion: us-east-1
+  secretName: prod/mysql/crud-app
