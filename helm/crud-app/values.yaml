@@ -19,4 +19,4 @@ database:
 
 secrets:
   awsRegion: us-east-1
-  secretName: prod/mysql/crud-app
+  secretName: rds!db-9ffd2c44-ee29-4b66-aadb-eae4e36fc654
