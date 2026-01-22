@@ -2,13 +2,13 @@ namespace: prod
 
 backend:
   name: backend
-  image: adarshjain/backend:latest
+  image: adarshjain428/frontend:v13
   replicas: 2
   port: 5000
 
 frontend:
   name: frontend
-  image: adarshjain/frontend:latest
+  image: adarshjain428/frontend:v13
   replicas: 2
   port: 80
 
