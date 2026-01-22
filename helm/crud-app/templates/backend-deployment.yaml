@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.backend.name }}
-  namespace: {{ .Values.namespace }}
+  name: {{ .Values.backend.name | quote }}
+  namespace: {{ .Values.namespace | quote }}
 spec:
   replicas: {{ .Values.backend.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.backend.name }}
+      app: {{ .Values.backend.name | quote }}
   template:
     metadata:
       labels:
-        app: {{ .Values.backend.name }}
+        app: {{ .Values.backend.name | quote }}
     spec:
       containers:
         - name: backend
-          image: {{ .Values.backend.image }}
+          image: {{ .Values.backend.image | quote }}
           ports:
             - containerPort: {{ .Values.backend.port }}
           env:
             - name: DB_HOST
-              value: {{ .Values.database.host }}
+              value: {{ .Values.database.host | quote }}
             - name: DB_NAME
-              value: {{ .Values.database.name }}
+              value: {{ .Values.database.name | quote }}
             - name: DB_PORT
-              value: {{ .Values.database.port }}
+              value: {{ .Values.database.port | quote }}
           envFrom:
           - secretRef:
               name: rds-mysql-secret
