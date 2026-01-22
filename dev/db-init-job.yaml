@@ -1,0 +1,46 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: crud-app-db-init
+  namespace: prod
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: mysql-init
+          image: mysql:8.0
+          env:
+            - name: DB_HOST
+              value: crud-app.c47akookwd22.us-east-1.rds.amazonaws.com
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: DB_PASSWORD
+          command:
+            - sh
+            - -c
+            - |
+              mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" <<'EOF'
+              CREATE DATABASE IF NOT EXISTS crud_app;
+              USE crud_app;
+
+              CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                email VARCHAR(255) NOT NULL UNIQUE,
+                password VARCHAR(255) NOT NULL,
+                role ENUM('admin', 'viewer') NOT NULL DEFAULT 'viewer',
+                is_active TINYINT(1) DEFAULT 1,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+              );
+              EOF
