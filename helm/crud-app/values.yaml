@@ -2,7 +2,7 @@ namespace: prod
 
 backend:
   name: backend
-  image: adarshjain428/frontend:v12
+  image: adarshjain428/backend:v12
   replicas: 2
   port: 5000
 
