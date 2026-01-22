@@ -27,7 +27,7 @@ spec:
             - name: DB_PORT
               value: "3306"
             - name: DB_NAME
-              value: crud-app
+              value: crud_app
           envFrom:
           - secretRef:
               name: rds-mysql-secret
