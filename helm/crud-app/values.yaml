@@ -8,7 +8,7 @@ backend:
 
 frontend:
   name: frontend
-  image: adarshjain428/frontend:v12
+  image: adarshjain428/frontend:v13
   replicas: 2
   port: 80
 
