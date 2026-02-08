@@ -19,4 +19,4 @@ database:
 
 secrets:
   awsRegion: us-east-1
-  secretName: rds!db-9ffd2c44-ee29-4b66-aadb-eae4e36fc654
+  secretName: rds!db-3422be04-40a4-4df1-bcba-f9cf315ce77d
