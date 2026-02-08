@@ -13,8 +13,8 @@ frontend:
   port: 80
 
 database:
-  host: crud-app.c47akookwd22.us-east-1.rds.amazonaws.com
-  name: crud_app
+  host: mysqldb.c47akookwd22.us-east-1.rds.amazonaws.com
+  name: mysqldb
   port: "3306"
 
 secrets:
